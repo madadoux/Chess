@@ -56,6 +56,15 @@
       <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
+      <Source>Textures\bPlayer1.png</Source>
+      <Name>Textures\bPlayer1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bPlayer1.xnb</Output>
+      <Time>2015-12-14T04:24:12+02:00</Time>
+    </Item>
+    <Item>
       <Source>Textures\bQueen.png</Source>
       <Name>Textures\bQueen</Name>
       <Importer>TextureImporter</Importer>
@@ -137,6 +146,15 @@
       <Time>2015-11-30T20:07:21.6235619+02:00</Time>
     </Item>
     <Item>
+      <Source>Textures\wPlayer1.png</Source>
+      <Name>Textures\wPlayer1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wPlayer1.xnb</Output>
+      <Time>2015-12-14T04:24:12+02:00</Time>
+    </Item>
+    <Item>
       <Source>Textures\wQueen.png</Source>
       <Name>Textures\wQueen</Name>
       <Importer>TextureImporter</Importer>
@@ -153,24 +171,6 @@
       <Options>None</Options>
       <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wRock.xnb</Output>
       <Time>2015-11-30T20:07:21.6235619+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\bPlayer1.png</Source>
-      <Name>Textures\bPlayer1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bPlayer1.xnb</Output>
-      <Time>2015-12-14T04:24:12+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\wPlayer1.png</Source>
-      <Name>Textures\wPlayer1</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wPlayer1.xnb</Output>
-      <Time>2015-12-14T04:24:12+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\bPlayer.jpg</Source>

@@ -167,6 +167,8 @@ namespace Chess
                     point.Y = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).Y;
                     X1 = (int)point.X;
                     Y1 = (int)point.Y;
+                    if (X1 == -1 || Y1 == -1)
+                        return point;
                     if (gameBoard[X1, Y1] != null)
                         isPressed = true;
                     return point;
