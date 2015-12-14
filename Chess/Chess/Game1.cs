@@ -11,18 +11,63 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Chess
 {
+    public enum ch
+    {
+
+
+        quit, reset, player1, player2
+
+    }
+
+    public delegate void onClick();
+
+    public delegate void onHover();
+
+    public class stringBtn
+    {
+
+        public string lable;
+        public Vector2 loc;
+        public Color col ;
+
+        Color _def; 
+        public Color defcolor 
+        { set { _def = value;
+        col = _def ;
+        }
+            get { return _def;  }
+        }
+        
+        public stringBtn(string _lab, Vector2 _loc, Color _col)
+        {
+            lable = _lab;
+            loc = _loc;
+            defcolor = _col; 
+            col = _col;
+        }
+
+        public onClick onClicked;
+        public onHover onHovered;
+
+
+    }
+
+
     public class Game1 : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        const int PreferredWidth = 440;
+        const int PreferredWidth = 640;
         const int PreferredHeight = 440;
 
         Rectangle WhiteRect;
         Rectangle BlackRect;
         Rectangle MainScreen;
+        Rectangle scorePanleContainer;
 
+
+        Texture2D ScorePanel;
         Texture2D Board;
         Texture2D wPlayer;
         Texture2D bPlayer;
@@ -41,6 +86,37 @@ namespace Chess
 
         const float MinTimeSinceLastInput = 0.15f;
         float TimeSinceLastInput = 0.0f;
+
+
+
+
+        Dictionary<ch, stringBtn> StringButtons = new Dictionary<ch, stringBtn>();
+
+
+
+
+        public void quite()
+        {
+            this.Exit();
+
+
+        }
+
+
+        public void reset()
+        {
+
+
+            board.ResetBoard();
+        }
+
+
+
+
+
+
+
+
 
 
         public Game1()
@@ -63,6 +139,32 @@ namespace Chess
             this.Window.ClientBounds.Height);
             PVSP = "Press 1 To Player VS Player";
             PVSC = "Press 2 To Player VS Computer";
+
+
+
+
+
+
+            scorePanleContainer = new Rectangle(440, 0, 200, 440);
+
+
+
+
+
+            StringButtons.Add(ch.player1, new stringBtn("player1 ", new Vector2(450, 100), Color.White));
+            StringButtons.Add(ch.player2, new stringBtn("player2", new Vector2(450, 200), Color.White));
+            StringButtons.Add(ch.reset, new stringBtn("Reset ", new Vector2(450, 300), Color.White));
+            StringButtons.Add(ch.quit, new stringBtn("Quit ", new Vector2(450, 325), Color.White));
+
+
+            StringButtons[ch.quit].onClicked = () => quite();
+            StringButtons[ch.reset].onClicked = () => reset();
+
+
+
+
+
+
             PVSPPosition = new Vector2(30, 30);
             PVSCPosition = new Vector2(20, 365);
             board = new Board(Content, GraphicsDevice);
@@ -80,6 +182,8 @@ namespace Chess
             mains = Content.Load<Texture2D>(@"Textures/mainscreen");
             wPlayer = Content.Load<Texture2D>(@"Textures/wPlayer");
             bPlayer = Content.Load<Texture2D>(@"Textures/bPlayer");
+
+            ScorePanel = Content.Load<Texture2D>(@"Textures/leftPnl");
 
         }
 
@@ -122,16 +226,43 @@ namespace Chess
                     {
                         TimeSinceLastInput = 0.0f;
                         gameState = GameStates.White;
+
                     }
                     else if ((mouse.LeftButton == ButtonState.Pressed) && BlackRect.Contains(mouse.X, mouse.Y))
                     {
                         TimeSinceLastInput = 0.0f;
                         gameState = GameStates.Black;
                     }
+
+
                 }
             }
             if (gameState == GameStates.Black || gameState == GameStates.White)
             {
+
+
+
+                Color cl = new Color();
+
+                if (gameState == GameStates.Black)
+                    cl = Color.Black;
+                else
+                    cl = Color.White;
+
+
+
+                StringButtons[ch.player1].defcolor = cl;
+
+                if (cl == Color.White)
+
+                    StringButtons[ch.player2].defcolor = Color.Black;
+                else
+
+                    StringButtons[ch.player2].defcolor = Color.White;
+
+
+
+
                 TimeSinceLastInput += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (TimeSinceLastInput >= MinTimeSinceLastInput)
                 {
@@ -141,9 +272,106 @@ namespace Chess
                         this.Window.Title = mouse.X + " " + mouse.Y;
                         board.Handle_Input(mouse);
                     }
+
+
+
+                    foreach (var item in StringButtons)
+                    {
+
+                        // hover 
+                        if (isStringHovered(item.Value))
+                        {
+                            item.Value.col = Color.Blue;
+                            if (item.Value.onHovered != null)
+                                item.Value.onHovered.Invoke();
+
+
+                        }
+
+                        else { item.Value.col = item.Value.defcolor; }
+
+                        // click 
+                        if (isStringClicked(item.Value))
+                        {
+                            item.Value.col = Color.Yellow;
+
+                            if (item.Value.onClicked != null)
+                                item.Value.onClicked();
+
+                            TimeSinceLastInput = 0.0f;
+
+                        }
+
+                    }
+
+
+
+
+
+
+
                 }
             }
             base.Update(gameTime);
+        }
+        bool isStringHovered(stringBtn stb)
+        {
+            var mouse = Mouse.GetState();
+
+            var strP = stb.loc;
+            var str = stb.lable;
+
+
+            if (mouse.X >= strP.X && mouse.Y >= strP.Y &&
+                mouse.X <= strP.X + font.MeasureString(str).X &&
+                mouse.Y <= strP.Y + font.MeasureString(str).Y)
+            {
+                return true;
+
+            }
+
+            else return false;
+        }
+
+        bool isStringClicked(stringBtn stb)
+        {
+            var mouse = Mouse.GetState();
+            var strP = stb.loc;
+            var str = stb.lable;
+
+            if (mouse.X >= strP.X && mouse.Y >= strP.Y &&
+                mouse.X <= strP.X + font.MeasureString(str).X &&
+                mouse.Y <= strP.Y + font.MeasureString(str).Y
+               && (mouse.LeftButton == ButtonState.Pressed))
+            {
+                return true;
+            }
+
+            else
+                return false;
+        }
+        void drawScorepanel()
+        {
+
+
+            spriteBatch.Begin();
+            spriteBatch.Draw(
+                ScorePanel,
+                scorePanleContainer,
+                Color.White);
+
+
+
+            foreach (var item in StringButtons)
+                spriteBatch.DrawString(font, item.Value.lable, item.Value.loc, item.Value.col);
+
+
+
+
+
+            spriteBatch.End();
+
+
         }
 
         protected override void Draw(GameTime gameTime)
@@ -179,6 +407,7 @@ namespace Chess
             if (gameState == GameStates.White || gameState == GameStates.Black)
             {
                 board.Draw();
+                drawScorepanel();
             }
             base.Draw(gameTime);
         }

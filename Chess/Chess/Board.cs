@@ -158,34 +158,44 @@ namespace Chess
 
         public Vector2 Handle_Input(MouseState mouse)
         {
-            if (mouse.LeftButton == ButtonState.Pressed)
-            {
-                Vector2 point;
-                if (isPressed == false)
-                {
-                    point.X = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).X;
-                    point.Y = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).Y;
-                    X1 = (int)point.X;
-                    Y1 = (int)point.Y;
-                    if (X1 == -1 || Y1 == -1)
-                        return point;
-                    if (gameBoard[X1, Y1] != null)
-                        isPressed = true;
-                    return point;
-                }
-                else
-                {
-                    point.X = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).X;
-                    point.Y = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).Y;
-                    isPressed = false;
-                    X2 = (int)point.X;
-                    Y2 = (int)point.Y;
-                    if (handle_Turns(X1, Y1, X2, Y2))
-                        handle_Eating(X1, Y1, X2, Y2);
+       Vector2 point;
 
-                    return point;
-                }
-            }
+       point.X = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).X;
+       point.Y = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).Y;
+
+
+       if (point.X != -1)
+       {
+
+
+           if (mouse.LeftButton == ButtonState.Pressed)
+           {
+
+               if (isPressed == false)
+               {
+
+                  
+                   X1 = (int)point.X;
+                   Y1 = (int)point.Y;
+                   if (gameBoard[X1, Y1] != null)
+                       isPressed = true;
+                   return point;
+               }
+               else
+               {
+               
+
+                   isPressed = false;
+                   X2 = (int)point.X;
+                   Y2 = (int)point.Y;
+                   if (handle_Turns(X1, Y1, X2, Y2))
+                       handle_Eating(X1, Y1, X2, Y2);
+
+                   return point;
+               }
+           }
+       }
+
             return new Vector2(-1, -1);
         }
 
