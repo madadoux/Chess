@@ -39,7 +39,7 @@ namespace Chess
         enum GameStates { mainscreen, ChoosingMenu, White, Black };
         GameStates gameState = GameStates.mainscreen;
 
-        const float MinTimeSinceLastInput = 0.25f;
+        const float MinTimeSinceLastInput = 0.15f;
         float TimeSinceLastInput = 0.0f;
 
 
@@ -96,33 +96,21 @@ namespace Chess
             MouseState mouse = Mouse.GetState();
             buttoncolor = new Color(0, 0, 0);
             buttoncolor2 = new Color(0, 0, 0);
-           if (gameState == GameStates.mainscreen)
+            if (gameState == GameStates.mainscreen)
             {
                 TimeSinceLastInput += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 KeyboardState keyState = Keyboard.GetState();
                 // TODO: Add your update logic here
-                if (mouse.X < PVSPPosition.X || mouse.Y < PVSPPosition.Y || mouse.X > PVSPPosition.X + font.MeasureString(PVSP).X ||
-                    mouse.Y > PVSPPosition.Y + font.MeasureString(PVSP).Y)
+
+                if (keyState.IsKeyDown(Keys.NumPad1))
                 {
-                    buttoncolor = new Color(0, 0, 0);
+                    buttoncolor = new Color(8, 22, 233);
+                    gameState = GameStates.ChoosingMenu;
                 }
-                else
+                else if (keyState.IsKeyDown(Keys.NumPad2))
                 {
-                    buttoncolor = new Color(2, 22, 233);
-                    if (TimeSinceLastInput >= MinTimeSinceLastInput)
-                    {
-                        if (keyState.IsKeyDown(Keys.NumPad1) || mouse.LeftButton == ButtonState.Pressed)
-                        {
-                            TimeSinceLastInput = 0.0f;
-                            buttoncolor = new Color(8, 22, 233);
-                            gameState = GameStates.ChoosingMenu;
-                        }
-                        else if (keyState.IsKeyDown(Keys.NumPad2))
-                        {
-                            buttoncolor2 = new Color(8, 22, 233);
-                            gameState = GameStates.ChoosingMenu;
-                        }
-                    }
+                    buttoncolor2 = new Color(8, 22, 233);
+                    gameState = GameStates.White;
                 }
             }
             if (gameState == GameStates.ChoosingMenu)

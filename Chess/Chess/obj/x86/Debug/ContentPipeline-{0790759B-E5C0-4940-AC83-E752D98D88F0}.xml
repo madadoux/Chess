@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Fonts\SpriteFont1.xnb</Output>
-      <Time>2015-12-14T13:55:53.2289056+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Fonts\SpriteFont1.xnb</Output>
+      <Time>2015-12-14T04:24:12+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\bBishop.png</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\bBishop.xnb</Output>
-      <Time>2015-12-14T14:02:14.6074976+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bBishop.xnb</Output>
+      <Time>2015-11-30T20:07:21.5923094+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\bKing.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\bKing.xnb</Output>
-      <Time>2015-12-14T14:02:14.6074976+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bKing.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\bKnight.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\bKnight.xnb</Output>
-      <Time>2015-12-14T14:02:14.6387536+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bKnight.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\boardBG.jpg</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\boardBG.xnb</Output>
-      <Time>2015-12-14T14:02:14.6543728+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\boardBG.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\bPawn.png</Source>
@@ -52,17 +52,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\bPawn.xnb</Output>
-      <Time>2015-12-14T14:02:14.6543728+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\bPlayer.png</Source>
-      <Name>Textures\bPlayer</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\bPlayer.xnb</Output>
-      <Time>2015-12-14T14:02:14.6543728+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bPawn.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\bQueen.png</Source>
@@ -70,8 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\bQueen.xnb</Output>
-      <Time>2015-12-14T14:02:14.670005+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bQueen.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\bRock.png</Source>
@@ -79,8 +70,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\bRock.xnb</Output>
-      <Time>2015-12-14T14:02:14.670005+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bRock.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\leftPnl.jpg</Source>
@@ -88,8 +79,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\leftPnl.xnb</Output>
-      <Time>2015-12-14T14:02:14.670005+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\leftPnl.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\mainscreen.jpg</Source>
@@ -97,8 +88,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\mainscreen.xnb</Output>
-      <Time>2015-12-14T14:02:14.6856243+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\mainscreen.xnb</Output>
+      <Time>2015-12-07T13:15:55.9085997+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\Select.png</Source>
@@ -106,8 +97,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\Select.xnb</Output>
-      <Time>2015-12-14T14:02:14.6856243+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\Select.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\wBishop.png</Source>
@@ -115,8 +106,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\wBishop.xnb</Output>
-      <Time>2015-12-14T14:02:14.6856243+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wBishop.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\wKing.png</Source>
@@ -124,8 +115,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\wKing.xnb</Output>
-      <Time>2015-12-14T14:02:14.6856243+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wKing.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\wKnight.png</Source>
@@ -133,8 +124,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\wKnight.xnb</Output>
-      <Time>2015-12-14T14:02:14.7012503+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wKnight.xnb</Output>
+      <Time>2015-11-30T20:07:21.6079531+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\wPawn.png</Source>
@@ -142,17 +133,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\wPawn.xnb</Output>
-      <Time>2015-12-14T14:02:14.7012503+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\wPlayer.png</Source>
-      <Name>Textures\wPlayer</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\wPlayer.xnb</Output>
-      <Time>2015-12-14T14:02:14.7012503+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wPawn.xnb</Output>
+      <Time>2015-11-30T20:07:21.6235619+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\wQueen.png</Source>
@@ -160,8 +142,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\wQueen.xnb</Output>
-      <Time>2015-12-14T14:02:14.7168749+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wQueen.xnb</Output>
+      <Time>2015-11-30T20:07:21.6235619+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\wRock.png</Source>
@@ -169,8 +151,44 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\wRock.xnb</Output>
-      <Time>2015-12-14T14:02:14.7168749+02:00</Time>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wRock.xnb</Output>
+      <Time>2015-11-30T20:07:21.6235619+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\bPlayer1.png</Source>
+      <Name>Textures\bPlayer1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bPlayer1.xnb</Output>
+      <Time>2015-12-14T04:24:12+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\wPlayer1.png</Source>
+      <Name>Textures\wPlayer1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wPlayer1.xnb</Output>
+      <Time>2015-12-14T04:24:12+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\bPlayer.jpg</Source>
+      <Name>Textures\bPlayer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\bPlayer.xnb</Output>
+      <Time>2015-12-09T17:14:42.7760871+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\wPlayer.jpg</Source>
+      <Name>Textures\wPlayer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\Textures\wPlayer.xnb</Output>
+      <Time>2015-12-09T17:14:42.8229645+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -179,10 +197,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>F:\WORK\Chess\Chess\ChessContent\</RootDirectory>
-      <LoggerRootDirectory>F:\WORK\Chess\Chess\Chess\</LoggerRootDirectory>
-      <IntermediateDirectory>F:\WORK\Chess\Chess\Chess\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>F:\WORK\Chess\Chess\Chess\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>E:\Hossam\Projects\XNA\Chess-master\Chess\ChessContent\</RootDirectory>
+      <LoggerRootDirectory>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\Hossam\Projects\XNA\Chess-master\Chess\Chess\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -211,7 +229,7 @@
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2015-11-30T18:49:39.0931302+02:00</Value>
+        <Value>2015-11-27T14:52:13.2602157+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

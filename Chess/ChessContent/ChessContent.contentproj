@@ -62,8 +62,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\bPlayer.png">
-      <Name>bPlayer</Name>
+    <Compile Include="Textures\bPlayer1.png">
+      <Name>bPlayer1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -112,8 +112,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Textures\wPlayer.png">
-      <Name>wPlayer</Name>
+    <Compile Include="Textures\wPlayer1.png">
+      <Name>wPlayer1</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -124,6 +124,18 @@
     </Compile>
     <Compile Include="Textures\wRock.png">
       <Name>wRock</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Textures\bPlayer.jpg">
+      <Name>bPlayer</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Textures\wPlayer.jpg">
+      <Name>wPlayer</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

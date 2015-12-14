@@ -4,7 +4,6 @@ Content\Textures\bKing.xnb
 Content\Textures\bKnight.xnb
 Content\Textures\boardBG.xnb
 Content\Textures\bPawn.xnb
-Content\Textures\bPlayer.xnb
 Content\Textures\bQueen.xnb
 Content\Textures\bRock.xnb
 Content\Textures\leftPnl.xnb
@@ -14,6 +13,9 @@ Content\Textures\wBishop.xnb
 Content\Textures\wKing.xnb
 Content\Textures\wKnight.xnb
 Content\Textures\wPawn.xnb
-Content\Textures\wPlayer.xnb
 Content\Textures\wQueen.xnb
 Content\Textures\wRock.xnb
+Content\Textures\bPlayer1.xnb
+Content\Textures\wPlayer1.xnb
+Content\Textures\bPlayer.xnb
+Content\Textures\wPlayer.xnb
