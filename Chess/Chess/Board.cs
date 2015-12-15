@@ -27,8 +27,11 @@ namespace Chess
         private const int rows = 8, columns = 8;
         private bool isPressed = false;
         private bool kill = false;
-        public bool turns = false;
+        private bool turns = false;
+        private bool MoveIt = false;
+        public bool wCheck = false, bCheck = false;
         private int X1, Y1, X2, Y2;
+        private int wKingRow, wKingCol, bKingRow, bKingCol;
         private /*const*/ Vector2 StartToDisplay = new Vector2(20, 20);
         private /*const*/ Vector2 cell_Width_Height = new Vector2(50, 50);
         private const int PreferredWidth = 440;
@@ -61,12 +64,12 @@ namespace Chess
 
             // Black Units
             gameBoard[0, 0] = new Rock(12, 4, "bRock");
-            gameBoard[0, 1] = new Knight(13, 3, "bKnight");
-            gameBoard[0, 2] = new Bishop(14, 2, "bBishop");
+            gameBoard[0, 1] = new Knight(13, 2, "bKnight");
+            gameBoard[0, 2] = new Bishop(14, 3, "bBishop");
             gameBoard[0, 3] = new Queen(15, 5, "bQueen");
             gameBoard[0, 4] = new King(16, 6, "bKing");
-            gameBoard[0, 5] = new Bishop(14, 2, "bBishop");
-            gameBoard[0, 6] = new Knight(13, 3, "bKnight");
+            gameBoard[0, 5] = new Bishop(14, 3, "bBishop");
+            gameBoard[0, 6] = new Knight(13, 2, "bKnight");
             gameBoard[0, 7] = new Rock(12, 4, "bRock");
 
             gameBoard[1, 0] = new Pawn(11, 1, "bPawn");
@@ -78,14 +81,16 @@ namespace Chess
             gameBoard[1, 6] = new Pawn(11, 1, "bPawn");
             gameBoard[1, 7] = new Pawn(11, 1, "bPawn");
 
+            bKingRow = 0; bKingCol = 4;
+
             // White Units
             gameBoard[7, 0] = new Rock(2, 4, "wRock");
-            gameBoard[7, 1] = new Knight(3, 3, "wKnight");
-            gameBoard[7, 2] = new Bishop(4, 2, "wBishop");
+            gameBoard[7, 1] = new Knight(3, 2, "wKnight");
+            gameBoard[7, 2] = new Bishop(4, 3, "wBishop");
             gameBoard[7, 3] = new Queen(5, 5, "wQueen");
             gameBoard[7, 4] = new King(6, 6, "wKing");
-            gameBoard[7, 5] = new Bishop(4, 2, "wBishop");
-            gameBoard[7, 6] = new Knight(3, 3, "wKnight");
+            gameBoard[7, 5] = new Bishop(4, 3, "wBishop");
+            gameBoard[7, 6] = new Knight(3, 2, "wKnight");
             gameBoard[7, 7] = new Rock(2, 4, "wRock");
 
             gameBoard[6, 0] = new Pawn(1, 1, "wPawn");
@@ -96,6 +101,8 @@ namespace Chess
             gameBoard[6, 5] = new Pawn(1, 1, "wPawn");
             gameBoard[6, 6] = new Pawn(1, 1, "wPawn");
             gameBoard[6, 7] = new Pawn(1, 1, "wPawn");
+
+            wKingRow = 7; wKingCol = 4;
         }
         public void Draw()
         {
@@ -104,18 +111,17 @@ namespace Chess
             SP.Draw(BoardPic,
                 new Rectangle(0, 0, PreferredWidth, PreferredHeight),
                 Color.White);
-            for (int i = 0; i < columns; i++)
-                for (int j = 0; j < rows; j++)
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < columns; j++)
                 {
                     if (isPressed)
                     {
-
-                        if (gameBoard[j, i] == null && X1 >= 0 && Y2 >= 0 && move(X1, Y1, j, i))
+                        if (gameBoard[i, j] == null && X1 >= 0 && Y2 >= 0 && move(X1, Y1, i, j)) 
                         {
                             SP.Draw(selectPic,
-                                        new Rectangle((int)StartToDisplay.Y + i * (int)cell_Width_Height.X, (int)StartToDisplay.X + j * (int)cell_Width_Height.X,
-                                            (int)cell_Width_Height.X, (int)cell_Width_Height.Y),
-                                            Color.Red);
+                                   new Rectangle((int)squareCoord[i, j].X, (int)squareCoord[i, j].Y,
+                                        (int)cell_Width_Height.X, (int)cell_Width_Height.Y),
+                                         Color.Red);
                         }
                     }
                     if (gameBoard[i, j] != null)
@@ -126,6 +132,21 @@ namespace Chess
                                 Color.White);
                     }
                 }
+
+            if (wCheck)
+            {
+                SP.Draw(selectPic,
+                                   new Rectangle((int)squareCoord[wKingRow, wKingCol].X, (int)squareCoord[wKingRow, wKingCol].Y,
+                                        (int)cell_Width_Height.X, (int)cell_Width_Height.Y),
+                                         Color.Red);
+            }
+            if (bCheck)
+            {
+                SP.Draw(selectPic,
+                                   new Rectangle((int)squareCoord[bKingRow, bKingCol].X, (int)squareCoord[bKingRow, bKingCol].Y,
+                                        (int)cell_Width_Height.X, (int)cell_Width_Height.Y),
+                                         Color.Red);
+            }
             SP.End();
         }
 
@@ -141,7 +162,7 @@ namespace Chess
             }
             else return new Vector2(-1, -1);
         }*/
-        public Vector2 on_Which_Cell(Vector2 mousepress)
+        private Vector2 on_Which_Cell(Vector2 mousepress)
         {
             for (int i = 0; i < rows; i++)
             {
@@ -158,59 +179,49 @@ namespace Chess
 
         public Vector2 Handle_Input(MouseState mouse)
         {
-       Vector2 point;
+            Vector2 point;
 
-       point.X = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).X;
-       point.Y = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).Y;
+            point.X = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).X;
+            point.Y = (int)on_Which_Cell(new Vector2(mouse.X, mouse.Y)).Y;
 
+            if (point.X != -1)
+            {
+                if (mouse.LeftButton == ButtonState.Pressed)
+                {
+                    if (isPressed == false)
+                    {
+                        MoveIt = false;
+                        X1 = (int)point.X;
+                        Y1 = (int)point.Y;
+                        if (gameBoard[X1, Y1] != null)
+                            isPressed = true;
+                        return point;
+                    }
+                    else
+                    {
+                        isPressed = false;
+                        X2 = (int)point.X;
+                        Y2 = (int)point.Y;
+                        if (handle_Turns(X1, Y1, X2, Y2))
+                            handle_Eating(X1, Y1, X2, Y2);
 
-       if (point.X != -1)
-       {
-
-
-           if (mouse.LeftButton == ButtonState.Pressed)
-           {
-
-               if (isPressed == false)
-               {
-
-                  
-                   X1 = (int)point.X;
-                   Y1 = (int)point.Y;
-                   if (gameBoard[X1, Y1] != null)
-                       isPressed = true;
-                   return point;
-               }
-               else
-               {
-               
-
-                   isPressed = false;
-                   X2 = (int)point.X;
-                   Y2 = (int)point.Y;
-                   if (handle_Turns(X1, Y1, X2, Y2))
-                       handle_Eating(X1, Y1, X2, Y2);
-
-                   return point;
-               }
-           }
-       }
-
+                        return point;
+                    }
+                }
+            }
             return new Vector2(-1, -1);
         }
 
-        public bool move(int oldRow, int oldCol, int newRow, int newCol)
+        private bool move(int oldRow, int oldCol, int newRow, int newCol)
         {
             if (oldRow == -1 || oldCol == -1 || newRow == -1 || newCol == -1)
                 return false;
             kill = (gameBoard[newRow, newCol] != null);
-            if (gameBoard[oldRow, oldCol] == null)
-                return false;
 
             bool LegalMove = gameBoard[oldRow, oldCol].Move(oldRow, oldCol, newRow, newCol, kill);
             if (LegalMove)
             {
-                if (gameBoard[oldRow, oldCol] != null && gameBoard[oldRow, oldCol].Type % 10 != 3)
+                if (gameBoard[oldRow, oldCol].Type % 10 != 3)
                 {
                     int
                         startRow = oldRow,
@@ -242,7 +253,7 @@ namespace Chess
             return false;
         }
 
-        public bool handle_Turns(int oldRow, int oldCol, int newRow, int newCol)
+        private bool handle_Turns(int oldRow, int oldCol, int newRow, int newCol)
         {
             if (turns == false && gameBoard[oldRow, oldCol].Type < 10)
             {
@@ -255,22 +266,72 @@ namespace Chess
             return false;
         }
 
-        void commmitMove(int oldRow, int oldCol, int newRow, int newCol)
+        private void commmitMove(int oldRow, int oldCol, int newRow, int newCol)
         {
-            if ((gameBoard[oldRow, oldCol].Type == 11 || gameBoard[oldRow, oldCol].Type == 1))
-            {
-                gameBoard[oldRow, oldCol].PawnFirstMove = true;
-            }
+            Piece tmp = gameBoard[newRow, newCol];                      
             gameBoard[newRow, newCol] = gameBoard[oldRow, oldCol];
             gameBoard[oldRow, oldCol] = null;
 
-            if (turns == false)
-                turns = true;
+            if (gameBoard[newRow, newCol].Type == 6)
+            {
+                wKingRow = newRow;
+                wKingCol = newCol;
+            }
+            if (gameBoard[newRow, newCol].Type == 16)
+            {
+                bKingRow = newRow;
+                bKingCol = newCol;
+            }  
+
+            if (isChecked())
+            {
+                if (wCheck)
+                {
+                    if (gameBoard[newRow, newCol].Type < 10 || gameBoard[newRow, newCol].Type == 16)
+                    {
+                        gameBoard[oldRow, oldCol] = gameBoard[newRow, newCol];
+                        gameBoard[newRow, newCol] = tmp;
+                        MoveIt = true;
+                    }
+                }
+                if (bCheck)
+                {
+                    if (gameBoard[newRow, newCol].Type > 10)
+                    {
+                        gameBoard[oldRow, oldCol] = gameBoard[newRow, newCol];
+                        gameBoard[newRow, newCol] = tmp;
+                        MoveIt = true;
+                    }
+                }
+            }
+            if (MoveIt == false)
+            {
+                if ((gameBoard[newRow, newCol].Type == 11 || gameBoard[newRow, newCol].Type == 1))
+                {
+                    gameBoard[newRow, newCol].PawnFirstMove = true;
+                }
+
+                if (turns == false)
+                    turns = true;
+                else
+                    turns = false;
+            }
             else
-                turns = false;
+            {
+                if (gameBoard[oldRow, oldCol].Type == 6)
+                {
+                    wKingRow = oldRow;
+                    wKingCol = oldCol;
+                }
+                if (gameBoard[oldRow, oldCol].Type == 16)
+                {
+                    bKingRow = oldRow;
+                    bKingCol = oldCol;
+                }
+            }
         }
 
-        public void handle_Eating(int oldRow, int oldCol, int newRow, int newCol)
+        private void handle_Eating(int oldRow, int oldCol, int newRow, int newCol)
         {
             if (kill)
             {
@@ -285,6 +346,35 @@ namespace Chess
                 commmitMove(oldRow, oldCol, newRow, newCol);
             }
             kill = false;
+        }
+
+        public bool isChecked()
+        {
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < columns; j++)
+                {
+                    if (gameBoard[i, j] != null)
+                    {
+                        if (gameBoard[i, j].Type < 10)
+                        {
+                            if (move(i, j, bKingRow, bKingCol))
+                            {
+                                bCheck = true;
+                                return true;
+                            }
+                        }
+                        if (gameBoard[i, j].Type > 10)
+                        {
+                            if (move(i, j, wKingRow, wKingCol))
+                            {
+                                wCheck = true;
+                                return true;
+                            }
+                        }
+                    }
+                }
+            wCheck = false; bCheck = false;
+            return false;
         }
     }
 }
