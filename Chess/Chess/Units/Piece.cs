@@ -20,7 +20,6 @@ namespace Chess
         public Texture2D gamePiece;
         private int type;
         private int weight; 
-        private string pieceName;
         private PieceMovingBehavior movingBehavior;
         public bool PawnFirstMove = false;
 
@@ -36,9 +35,8 @@ namespace Chess
         {
             type = _type;
             weight = _weight;
-            pieceName = _pieceName;
             movingBehavior = _movingBehavior;
-            gamePiece = CM.Load<Texture2D>(@"Textures/" + pieceName);
+            gamePiece = CM.Load<Texture2D>(@"Textures/" + _pieceName);
         }
 
         public bool Move(int oldRow, int oldColumn, int newRow, int newColumn, bool kill)

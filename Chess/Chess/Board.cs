@@ -21,19 +21,15 @@ namespace Chess
         ContentManager CM;
         GraphicsDevice GD;
         Texture2D BoardPic, selectPic;
-        private const string BoardPicName = "boardBG", selectImg = "Select";
         private Piece[,] gameBoard;
         private Vector2[,] squareCoord;
         private const int rows = 8, columns = 8;
-        private bool isPressed = false;
-        private bool kill = false;
-        private bool turns = false;
-        private bool MoveIt = false;
+        private bool isPressed = false, kill = false, turns = false, MoveIt = false, WisChecked = false, BisChecked = false;
         public bool wCheck = false, bCheck = false;
         private int X1, Y1, X2, Y2;
         private int wKingRow, wKingCol, bKingRow, bKingCol;
-        private /*const*/ Vector2 StartToDisplay = new Vector2(20, 20);
-        private /*const*/ Vector2 cell_Width_Height = new Vector2(50, 50);
+        private Vector2 StartToDisplay = new Vector2(20, 20);
+        private Vector2 cell_Width_Height = new Vector2(50, 50);
         private const int PreferredWidth = 440;
         private const int PreferredHeight = 440;
 
@@ -43,16 +39,16 @@ namespace Chess
             CM = _CM;
             Piece.CM = _CM;
             GD = _GD;
-            BoardPic = CM.Load<Texture2D>(@"Textures/" + BoardPicName);
-            selectPic = CM.Load<Texture2D>(@"Textures/" + selectImg);
+            BoardPic = CM.Load<Texture2D>(@"Textures/boardBG");
+            selectPic = CM.Load<Texture2D>(@"Textures/Select");
             setBoard();
             ResetBoard();
         }
         public void setBoard()
         {
             squareCoord = new Vector2[rows, columns];
-            for (int i = 0; i < columns; i++)
-                for (int j = 0; j < rows; j++)
+            for (int i = 0; i < rows; i++)
+                for (int j = 0; j < columns; j++)
                 {
                     squareCoord[i, j].X = (StartToDisplay.X + (j * cell_Width_Height.X));
                     squareCoord[i, j].Y = (StartToDisplay.Y + (i * cell_Width_Height.Y));
@@ -116,12 +112,29 @@ namespace Chess
                 {
                     if (isPressed)
                     {
-                        if (gameBoard[i, j] == null && X1 >= 0 && Y2 >= 0 && move(X1, Y1, i, j)) 
+                        if (gameBoard[i, j] == null && X1 >= 0 && Y2 >= 0 && move(X1, Y1, i, j))
                         {
                             SP.Draw(selectPic,
                                    new Rectangle((int)squareCoord[i, j].X, (int)squareCoord[i, j].Y,
                                         (int)cell_Width_Height.X, (int)cell_Width_Height.Y),
                                          Color.Red);
+                        }
+                        if(gameBoard[i, j] != null && X1 >= 0 && Y2 >= 0 && move(X1, Y1, i, j))
+                        {
+                            if (turns == true && gameBoard[i, j].Type < 10)
+                            {
+                                SP.Draw(selectPic,
+                                   new Rectangle((int)squareCoord[i, j].X, (int)squareCoord[i, j].Y,
+                                        (int)cell_Width_Height.X, (int)cell_Width_Height.Y),
+                                         Color.Red);
+                            }
+                            else if (turns == false && gameBoard[i, j].Type > 10)
+                            {
+                                SP.Draw(selectPic,
+                                   new Rectangle((int)squareCoord[i, j].X, (int)squareCoord[i, j].Y,
+                                        (int)cell_Width_Height.X, (int)cell_Width_Height.Y),
+                                         Color.Red);
+                            }
                         }
                     }
                     if (gameBoard[i, j] != null)
@@ -190,11 +203,16 @@ namespace Chess
                 {
                     if (isPressed == false)
                     {
-                        MoveIt = false;
+                        MoveIt = false; WisChecked = false; BisChecked = false;
                         X1 = (int)point.X;
                         Y1 = (int)point.Y;
                         if (gameBoard[X1, Y1] != null)
-                            isPressed = true;
+                        {
+                            if (turns == false && gameBoard[X1, Y1].Type < 10)
+                                isPressed = true;
+                            else if (turns == true && gameBoard[X1, Y1].Type > 10)
+                                isPressed = true;
+                        }
                         return point;
                     }
                     else
@@ -202,7 +220,7 @@ namespace Chess
                         isPressed = false;
                         X2 = (int)point.X;
                         Y2 = (int)point.Y;
-                        if (handle_Turns(X1, Y1, X2, Y2))
+                        if (move(X1, Y1, X2, Y2))
                             handle_Eating(X1, Y1, X2, Y2);
 
                         return point;
@@ -216,7 +234,8 @@ namespace Chess
         {
             if (oldRow == -1 || oldCol == -1 || newRow == -1 || newCol == -1)
                 return false;
-            kill = (gameBoard[newRow, newCol] != null);
+
+            kill = gameBoard[newRow, newCol] != null;
 
             bool LegalMove = gameBoard[oldRow, oldCol].Move(oldRow, oldCol, newRow, newCol, kill);
             if (LegalMove)
@@ -253,22 +272,14 @@ namespace Chess
             return false;
         }
 
-        private bool handle_Turns(int oldRow, int oldCol, int newRow, int newCol)
-        {
-            if (turns == false && gameBoard[oldRow, oldCol].Type < 10)
-            {
-                return move(oldRow, oldCol, newRow, newCol);
-            }
-            if (turns == true && gameBoard[oldRow, oldCol].Type > 10)
-            {
-                return move(oldRow, oldCol, newRow, newCol);
-            }
-            return false;
-        }
-
         private void commmitMove(int oldRow, int oldCol, int newRow, int newCol)
         {
-            Piece tmp = gameBoard[newRow, newCol];                      
+            if (wCheck)
+                WisChecked = true;
+            if (bCheck)
+                BisChecked = true;
+
+            Piece tmp = gameBoard[newRow, newCol];
             gameBoard[newRow, newCol] = gameBoard[oldRow, oldCol];
             gameBoard[oldRow, oldCol] = null;
 
@@ -281,13 +292,17 @@ namespace Chess
             {
                 bKingRow = newRow;
                 bKingCol = newCol;
-            }  
+            }
 
             if (isChecked())
             {
+                if (WisChecked)
+                    bCheck = false;
+                if (BisChecked)
+                    wCheck = false;
                 if (wCheck)
                 {
-                    if (gameBoard[newRow, newCol].Type < 10 || gameBoard[newRow, newCol].Type == 16)
+                    if (turns == false || gameBoard[newRow, newCol].Type == 16)
                     {
                         gameBoard[oldRow, oldCol] = gameBoard[newRow, newCol];
                         gameBoard[newRow, newCol] = tmp;
@@ -296,7 +311,7 @@ namespace Chess
                 }
                 if (bCheck)
                 {
-                    if (gameBoard[newRow, newCol].Type > 10)
+                    if (turns == true)
                     {
                         gameBoard[oldRow, oldCol] = gameBoard[newRow, newCol];
                         gameBoard[newRow, newCol] = tmp;
@@ -350,6 +365,7 @@ namespace Chess
 
         public bool isChecked()
         {
+            wCheck = false; bCheck = false;
             for (int i = 0; i < rows; i++)
                 for (int j = 0; j < columns; j++)
                 {
@@ -360,7 +376,6 @@ namespace Chess
                             if (move(i, j, bKingRow, bKingCol))
                             {
                                 bCheck = true;
-                                return true;
                             }
                         }
                         if (gameBoard[i, j].Type > 10)
@@ -368,13 +383,16 @@ namespace Chess
                             if (move(i, j, wKingRow, wKingCol))
                             {
                                 wCheck = true;
-                                return true;
                             }
                         }
                     }
                 }
+            if (wCheck || bCheck)
+                return true;
+
             wCheck = false; bCheck = false;
             return false;
         }
     }
 }
+
