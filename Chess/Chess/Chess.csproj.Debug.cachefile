@@ -1,4 +1,5 @@
 Content\Fonts\SpriteFont1.xnb
+Content\Fonts\SpriteFont2.xnb
 Content\Textures\bBishop.xnb
 Content\Textures\bKing.xnb
 Content\Textures\bKnight.xnb
@@ -8,7 +9,6 @@ Content\Textures\bPlayer1.xnb
 Content\Textures\bQueen.xnb
 Content\Textures\bRock.xnb
 Content\Textures\leftPnl.xnb
-Content\Textures\mainscreen.xnb
 Content\Textures\Select.xnb
 Content\Textures\wBishop.xnb
 Content\Textures\wKing.xnb
@@ -19,3 +19,4 @@ Content\Textures\wQueen.xnb
 Content\Textures\wRock.xnb
 Content\Textures\bPlayer.xnb
 Content\Textures\wPlayer.xnb
+Content\Textures\mainscreen.xnb

@@ -11,6 +11,15 @@
       <Time>2015-12-14T04:24:12+02:00</Time>
     </Item>
     <Item>
+      <Source>Fonts\SpriteFont2.spritefont</Source>
+      <Name>Fonts\SpriteFont2</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Hossam\Projects\_GitHub\Chess\Chess\Chess\bin\x86\Debug\Content\Fonts\SpriteFont2.xnb</Output>
+      <Time>2015-12-21T16:42:52+02:00</Time>
+    </Item>
+    <Item>
       <Source>Textures\bBishop.png</Source>
       <Name>Textures\bBishop</Name>
       <Importer>TextureImporter</Importer>
@@ -90,15 +99,6 @@
       <Options>None</Options>
       <Output>E:\Hossam\Projects\_GitHub\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\leftPnl.xnb</Output>
       <Time>2015-11-30T20:07:22+02:00</Time>
-    </Item>
-    <Item>
-      <Source>Textures\mainscreen.jpg</Source>
-      <Name>Textures\mainscreen</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Hossam\Projects\_GitHub\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\mainscreen.xnb</Output>
-      <Time>2015-12-07T13:15:56+02:00</Time>
     </Item>
     <Item>
       <Source>Textures\Select.png</Source>
@@ -189,6 +189,15 @@
       <Options>None</Options>
       <Output>E:\Hossam\Projects\_GitHub\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\wPlayer.xnb</Output>
       <Time>2015-12-09T17:14:44+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\mainscreen.jpg</Source>
+      <Name>Textures\mainscreen</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Hossam\Projects\_GitHub\Chess\Chess\Chess\bin\x86\Debug\Content\Textures\mainscreen.xnb</Output>
+      <Time>2015-12-21T15:42:46+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

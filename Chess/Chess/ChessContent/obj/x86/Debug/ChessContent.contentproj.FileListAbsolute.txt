@@ -1,0 +1,3 @@
+E:\Hossam\Projects\_GitHub\Chess\Chess\ChessContent\obj\x86\Debug\ChessContent.contentprojResolveAssemblyReference.cache
+C:\Users\khaled\Downloads\Chess\Chess\ChessContent\obj\x86\Debug\ChessContent.contentprojResolveAssemblyReference.cache
+C:\Users\khaled\Desktop\Chess\Chess\ChessContent\obj\x86\Debug\ChessContent.contentprojResolveAssemblyReference.cache
