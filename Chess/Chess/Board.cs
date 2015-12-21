@@ -33,7 +33,7 @@ namespace Chess
         private const int PreferredWidth = 440;
         private const int PreferredHeight = 440;
 
-
+        UserInput textMessage;
         public Board(ContentManager _CM, GraphicsDevice _GD)
         {
             CM = _CM;
@@ -330,6 +330,7 @@ namespace Chess
                     turns = true;
                 else
                     turns = false;
+                Promotion();
             }
             else
             {
@@ -392,6 +393,84 @@ namespace Chess
 
             wCheck = false; bCheck = false;
             return false;
+        }
+
+        public void Promotion()
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                if (gameBoard[0, j] != null)
+                {
+                    if (gameBoard[0, j].Type == 1)
+                    {
+                        textMessage = new UserInput();
+                        textMessage.ShowDialog();
+                        string mycoice = textMessage.Data;
+                        if (mycoice.Equals("K") || mycoice.Equals("k"))
+                        {
+                            gameBoard[0, j] = new Knight(3, 3, "wKnight");
+                            break;
+                        }
+                        else if (mycoice.Equals("q") || mycoice.Equals("Q"))
+                        {
+                            gameBoard[0, j] = new Queen(5, 5, "wQueen");
+                            break;
+                        }
+                        else if (mycoice.Equals("R") || mycoice.Equals("r"))
+                        {
+                            gameBoard[0, j] = new Rock(2, 4, "wRock");
+                            break;
+                        }
+                        else if (mycoice.Equals("B") || mycoice.Equals("b"))
+                        {
+                            gameBoard[0, j] = new Bishop(4, 2, "wBishop");
+                            break;
+                        }
+                        else
+                        {
+                            gameBoard[0, j] = new Pawn(1, 1, "wPawn");
+                            break;
+                        }
+                    }
+                }
+            }
+            for (int j = 0; j < columns; j++)
+            {
+                if (gameBoard[7, j] != null)
+                {
+                    if (gameBoard[7, j].Type == 11)
+                    {
+                        textMessage = new UserInput();
+                        textMessage.ShowDialog();
+                        string mycoice = textMessage.Data;
+                        if (mycoice.Equals("K") || mycoice.Equals("k"))
+                        {
+                            gameBoard[7, j] = new Knight(13, 3, "bKnight");
+                            break;
+                        }
+                        else if (mycoice.Equals("q") || mycoice.Equals("Q"))
+                        {
+                            gameBoard[7, j] = new Queen(15, 5, "bQueen");
+                            break;
+                        }
+                        else if (mycoice.Equals("R") || mycoice.Equals("r"))
+                        {
+                            gameBoard[7, j] = new Rock(12, 4, "bRock");
+                            break;
+                        }
+                        else if (mycoice.Equals("b") || mycoice.Equals("B"))
+                        {
+                            gameBoard[7, j] = new Bishop(14, 2, "bBishop");
+                            break;
+                        }
+                        else
+                        {
+                            gameBoard[7, j] = new Pawn(11, 1, "bPawn");
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }
